@@ -1,0 +1,46 @@
+﻿@model protvshows.Models.tvshow
+@{
+  ViewBag.Title = "TV show";
+}
+
+<h2 style="margin-bottom:25px;">@ViewData["Message"]</h2>
+
+@if (Model == null)
+{
+    <p>Запрос вернул пустой результат. Возможно, в базе данных нет такого сериала.</p>
+}
+else
+{
+    <div class="row" style="margin-bottom:30px;">
+		<div class="col-md-6">
+	        <img style="max-width:100%; height:auto;" src="@Html.DisplayFor(modelItem => Model.picture_path_main)"/>
+	    </div>
+	    <div class="col-md-6">
+		    <p><b>Жанр:</b> @Html.DisplayFor(modelItem => Model.genre)</p>
+            <p><b>Инфо:</b> @Html.DisplayFor(modelItem => Model.info)</p>
+		    <p><b>Аналоги:</b> <i>в процессе</i></p>      
+		    <!--<li>@Html.DisplayFor(modelItem => Model.id)</li>-->
+            <!--<li>@Html.DisplayFor(modelItem => Model.short_name)</li>-->
+            <!--<li>@Html.DisplayFor(modelItem => Model.title)</li>-->
+            <!--<li>@Html.DisplayFor(modelItem => Model.rating_id)</li>-->
+            <!--<li>@Html.DisplayFor(modelItem => Model.added_on_date)</li>-->
+            <!--<li>@Html.DisplayFor(modelItem => Model.added_by_user)</li>-->
+	    </div>
+	</div>
+
+    <div class="row" style="margin-bottom:30px;">
+	    <div class="col-md-1"></div>
+        <div class="col-md-10"><p>@Html.DisplayFor(modelItem => Model.description)</p></div>
+	    <div class="col-md-1"></div>
+	</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img style="max-width:100%; height:auto;" src="@Html.DisplayFor(modelItem => Model.picture_path_detailed)"/>
+        </div>
+        <div class="col-md-6">
+		    <p><b>Вердикт:</b> @Html.DisplayFor(modelItem => Model.verdict)</p>
+		    <p><b>Трейлер:</b> @Html.DisplayFor(modelItem => Model.trailer_link)</p>
+        </div>
+    </div>
+}
