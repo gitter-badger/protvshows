@@ -24,9 +24,7 @@ namespace protvshows.Controllers
         public IActionResult GetTVshow(string short_name)
         {
 			tvshowContext context = HttpContext.RequestServices.GetService(typeof(tvshowContext)) as tvshowContext;
-            var tvshow = context.Gettvshow(short_name);
-            if (tvshow != null) { ViewData["Message"] = tvshow.title; } else { ViewData["Message"] = "Сериал не найден"; }
-            return View("tvshow", tvshow);
+            return View("tvshow", context.Gettvshow(short_name));
         }
     }
 }

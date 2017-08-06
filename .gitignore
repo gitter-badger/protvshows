@@ -1,7 +1,7 @@
 # Autosave files
 *~
 
-docs/*
+/docs/*
 
 # build
 [Oo]bj/

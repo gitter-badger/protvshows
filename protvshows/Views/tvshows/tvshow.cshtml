@@ -1,46 +1,84 @@
 ﻿@model protvshows.Models.tvshow
-@{
-  ViewBag.Title = "TV show";
-}
-
-<h2 style="margin-bottom:25px;">@ViewData["Message"]</h2>
 
 @if (Model == null)
 {
-    <p>Запрос вернул пустой результат. Возможно, в базе данных нет такого сериала.</p>
+	<div class="container" style="width:65%; margin-top:50px;">
+        <p>Запрос вернул пустой результат. Возможно, в базе данных нет такого сериала.</p>
+	</div>
 }
 else
 {
-    <div class="row" style="margin-bottom:30px;">
+<div class="container" style="width:65%; margin-top:50px;">
+    <div class="row">
 		<div class="col-md-6">
-	        <img style="max-width:100%; height:auto;" src="@Html.DisplayFor(modelItem => Model.picture_path_main)"/>
+	        <img class="rating" style="max-width:100%; height:auto;" src="@Model.picture_path_main"/>
 	    </div>
 	    <div class="col-md-6">
-		    <p><b>Жанр:</b> @Html.DisplayFor(modelItem => Model.genre)</p>
-            <p><b>Инфо:</b> @Html.DisplayFor(modelItem => Model.info)</p>
-		    <p><b>Аналоги:</b> <i>в процессе</i></p>      
-		    <!--<li>@Html.DisplayFor(modelItem => Model.id)</li>-->
-            <!--<li>@Html.DisplayFor(modelItem => Model.short_name)</li>-->
-            <!--<li>@Html.DisplayFor(modelItem => Model.title)</li>-->
-            <!--<li>@Html.DisplayFor(modelItem => Model.rating_id)</li>-->
-            <!--<li>@Html.DisplayFor(modelItem => Model.added_on_date)</li>-->
-            <!--<li>@Html.DisplayFor(modelItem => Model.added_by_user)</li>-->
+		    <h1 style="margin-top:0px; margin-bottom:50px;"><b>@Html.DisplayFor(modelItem => Model.title)</b></h1>
+            <div class="row row-show-description">
+			    <div class="col-md-3"><b>Жанр:</b></div>
+				<div class="col-md-9">@Html.DisplayFor(modelItem => Model.genre)</div>
+			</div>
+			<div class="row row-show-description">
+                <div class="col-md-3"><b>Инфо:</b></div>
+                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.info)</div>
+            </div>
+            <div class="row row-show-description">
+                <div class="col-md-3"><b>Аналоги:</b></div>
+                <div class="col-md-9">[в процессе]</div>
+            </div>
+			<div class="row row-show-description">
+                <div class="col-md-12" style="margin-top:30px;">
+                    <a target="_blank" class="transparent-btn-black" href="@Model.link_trailer">Смотреть трейлер</a>
+                </div>
+            </div>
 	    </div>
 	</div>
+</div> 
 
-    <div class="row" style="margin-bottom:30px;">
-	    <div class="col-md-1"></div>
-        <div class="col-md-10"><p>@Html.DisplayFor(modelItem => Model.description)</p></div>
-	    <div class="col-md-1"></div>
+<div class="container cutter" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="container" style="width:60%">
+	    <p style="line-height: 1.6em; margin:0;">@Html.DisplayFor(modelItem => Model.description)</p>
 	</div>
+</div>
 
+<div class="container" style="width:65%; padding-bottom:50px;">
     <div class="row">
         <div class="col-md-6">
-            <img style="max-width:100%; height:auto;" src="@Html.DisplayFor(modelItem => Model.picture_path_detailed)"/>
+            <img class="rating" style="max-width:100%; height:auto;" src="@Model.picture_path_detailed"/>
         </div>
         <div class="col-md-6">
-		    <p><b>Вердикт:</b> @Html.DisplayFor(modelItem => Model.verdict)</p>
-		    <p><b>Трейлер:</b> @Html.DisplayFor(modelItem => Model.trailer_link)</p>
+            <div class="row row-show-description">
+                <div class="col-md-3"><b>Вердикт:</b></div>
+                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.verdict)</div>
+            </div>
+			<div class="row row-show-description">
+                <div class="col-md-3"><b>Рейтинг:</b></div>
+                <div class="col-md-9">
+                    <p>мужчины – @Model.rating_boy</p>
+					<p>женщины – @Model.rating_girl</p>               
+				    <p>эксперты – @Model.rating_expert</p>
+				    <p><a target="_blank" href="http://www.imdb.com/title/@Model.imdb_link_id/" title="Рейтинг по состоянию на @Model.rating_imdb_date">IMDB – @Model.rating_imdb</a></p>
+				</div>
+            </div>
+			<div class="row row-show-description">
+                <div class="col-md-12" style="margin-top:30px;">
+                    <a target="_blank" class="transparent-btn-black" href="/404">Подобрать мне сериал</a>
+                </div>
+            </div>
+            <div class="row row-show-description">
+				<div class="col-md-12" style="font-size:80%; margin-top:30px;">
+                    <p>
+						Не согласен с мнением наших экспертов?<br/>
+						Почитай <a href="/Home/About">как мы составляем рейтинг</a>.
+					</p>
+			        <p>
+						Есть, что добавить или хочется подискутировать?<br/>
+						Обсуди на странице этого сериала <a target="_blank" href="@Model.link_discussion">в Instagram</a>.
+					</p>
+				</div>
+			</div>
         </div>
     </div>
+</div>
 }

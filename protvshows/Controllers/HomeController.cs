@@ -29,6 +29,11 @@ namespace protvshows.Controllers
             return View();
         }
 
+		public IActionResult Search()
+		{
+			return View();
+		}
+
         public IActionResult Error()
         {
             return View();
