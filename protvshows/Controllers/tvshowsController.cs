@@ -9,22 +9,29 @@ using protvshows.Models;
 
 namespace protvshows.Controllers
 {
-    public class tvshowsController : Controller
+    public class TVshowsController : Controller
     {
+        private readonly TVshowContext _context;
+
+        public TVshowsController(TVshowContext context)
+		{
+			_context = context;
+		}
+
         // GET: tvshows/
         public IActionResult Index()
         {
-            tvshowContext context = HttpContext.RequestServices.GetService(typeof(tvshowContext)) as tvshowContext;
-
-            return View(context.GetAlltvshows());
+            ViewData["Title"] = "Все сериалы";
+            //tvshowContext context = HttpContext.RequestServices.GetService(typeof(tvshowContext)) as tvshowContext;
+            return View(_context.GetAlltvshows());
         }
 
 		// GET: tvshows/short_name
 		[HttpGet("tvshows/{short_name}")]
         public IActionResult GetTVshow(string short_name)
         {
-			tvshowContext context = HttpContext.RequestServices.GetService(typeof(tvshowContext)) as tvshowContext;
-            return View("tvshow", context.Gettvshow(short_name));
+            ViewData["Title"] = short_name;
+            return View("tvshow", _context.Gettvshow(short_name));
         }
     }
 }

@@ -1,14 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Error";
-}
-
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+﻿<div class="container">
+    <h2 style="margin-top:50px; margin-bottom:30px;">Oopsy, Daisy!</h2>
+    <h4>На сайте что-то сломалось.</h4>
+	<p>Скорее всего, мы уже об этом знаем и ремонтируем, но можете всё же
+	<a style="text-decoration:underline;" href="/Home/About#contact">сообщить нам</a> на всякий случай.</p>
+	<p>Новости/объявления должны появиться в <a style="text-decoration:underline;" href="https://twitter.com/protvshows">Твиттере</a>.</p>
+	<!--<h2 style="margin-top:50px; margin-bottom:30px;">@ViewData["message"]</h2>   
+    <h3>Status Code: @ViewData["statusCode"]</h3>
+    <div><pre>@ViewData["stackTrace"]</pre></div>-->
+</div>

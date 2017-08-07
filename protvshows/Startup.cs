@@ -34,7 +34,7 @@ namespace protvshows
             // config
             services.AddSingleton<IConfiguration>(Configuration);
 
-            services.Add(new ServiceDescriptor(typeof(tvshowContext), new tvshowContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(TVshowContext), new TVshowContext(Configuration.GetConnectionString("DefaultConnection"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +54,8 @@ namespace protvshows
             }
 
             app.UseStaticFiles();
-            app.UseStatusCodePages();
+            //app.UseStatusCodePages();
+            app.UseStatusCodePagesWithReExecute("/Home/StatusCode/{0}");
 
             app.UseMvc(routes =>
             {

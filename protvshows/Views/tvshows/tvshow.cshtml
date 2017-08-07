@@ -1,4 +1,4 @@
-﻿@model protvshows.Models.tvshow
+﻿@model protvshows.Models.TVshow
 
 @if (Model == null)
 {
@@ -11,17 +11,17 @@ else
 <div class="container" style="width:65%; margin-top:50px;">
     <div class="row">
 		<div class="col-md-6">
-	        <img class="rating" style="max-width:100%; height:auto;" src="@Model.picture_path_main"/>
+	        <img class="rating" style="max-width:100%; height:auto;" src="@Model.Picture_path_main"/>
 	    </div>
 	    <div class="col-md-6">
-		    <h1 style="margin-top:0px; margin-bottom:50px;"><b>@Html.DisplayFor(modelItem => Model.title)</b></h1>
+		    <h1 style="margin-top:0px; margin-bottom:50px;"><b>@Html.DisplayFor(modelItem => Model.Title)</b></h1>
             <div class="row row-show-description">
 			    <div class="col-md-3"><b>Жанр:</b></div>
-				<div class="col-md-9">@Html.DisplayFor(modelItem => Model.genre)</div>
+				<div class="col-md-9">@Html.DisplayFor(modelItem => Model.Genre)</div>
 			</div>
 			<div class="row row-show-description">
                 <div class="col-md-3"><b>Инфо:</b></div>
-                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.info)</div>
+                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.Info)</div>
             </div>
             <div class="row row-show-description">
                 <div class="col-md-3"><b>Аналоги:</b></div>
@@ -29,7 +29,7 @@ else
             </div>
 			<div class="row row-show-description">
                 <div class="col-md-12" style="margin-top:30px;">
-                    <a target="_blank" class="transparent-btn-black" href="@Model.link_trailer">Смотреть трейлер</a>
+                    <a target="_blank" class="transparent-btn-black" href="@Model.Link_trailer">Смотреть трейлер</a>
                 </div>
             </div>
 	    </div>
@@ -38,32 +38,32 @@ else
 
 <div class="container cutter" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="container" style="width:60%">
-	    <p style="line-height: 1.6em; margin:0;">@Html.DisplayFor(modelItem => Model.description)</p>
+	    <p style="line-height: 1.6em; margin:0;">@Html.DisplayFor(modelItem => Model.Description)</p>
 	</div>
 </div>
 
 <div class="container" style="width:65%; padding-bottom:50px;">
     <div class="row">
         <div class="col-md-6">
-            <img class="rating" style="max-width:100%; height:auto;" src="@Model.picture_path_detailed"/>
+            <img class="rating" style="max-width:100%; height:auto;" src="@Model.Picture_path_detailed"/>
         </div>
         <div class="col-md-6">
             <div class="row row-show-description">
                 <div class="col-md-3"><b>Вердикт:</b></div>
-                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.verdict)</div>
+                <div class="col-md-9">@Html.DisplayFor(modelItem => Model.Verdict)</div>
             </div>
 			<div class="row row-show-description">
                 <div class="col-md-3"><b>Рейтинг:</b></div>
                 <div class="col-md-9">
-                    <p>мужчины – @Model.rating_boy</p>
-					<p>женщины – @Model.rating_girl</p>               
-				    <p>эксперты – @Model.rating_expert</p>
-				    <p><a target="_blank" href="http://www.imdb.com/title/@Model.imdb_link_id/" title="Рейтинг по состоянию на @Model.rating_imdb_date">IMDB – @Model.rating_imdb</a></p>
+                    <p>мужчины – @Model.Rating_boy</p>
+					<p>женщины – @Model.Rating_girl</p>               
+				    <p>эксперты – @Model.Rating_expert</p>
+				    <p><a target="_blank" href="http://www.imdb.com/title/@Model.IMDB_link_id/" title="Рейтинг по состоянию на @Model.Rating_imdb_date">IMDB – @Model.Rating_imdb</a></p>
 				</div>
             </div>
 			<div class="row row-show-description">
                 <div class="col-md-12" style="margin-top:30px;">
-                    <a target="_blank" class="transparent-btn-black" href="/404">Подобрать мне сериал</a>
+                    <a target="_blank" class="transparent-btn-black" href="/Home/SuggestMe">Подобрать мне сериал</a>
                 </div>
             </div>
             <div class="row row-show-description">
@@ -74,11 +74,15 @@ else
 					</p>
 			        <p>
 						Есть, что добавить или хочется подискутировать?<br/>
-						Обсуди на странице этого сериала <a target="_blank" href="@Model.link_discussion">в Instagram</a>.
+						Обсуди на странице этого сериала <a target="_blank" href="@Model.Link_discussion">в Instagram</a>.
 					</p>
 				</div>
 			</div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+	document.title = "@Html.DisplayFor(modelItem => Model.Title) - protvshows";
+</script>
 }

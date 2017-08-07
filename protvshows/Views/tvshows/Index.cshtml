@@ -1,10 +1,10 @@
-﻿@model IEnumerable<protvshows.Models.tvshow>
+﻿@model IEnumerable<protvshows.Models.TVshow>
 
 <div style="background-color:#fafafa; color: #000000;">
     <div class="cutter" style="width:50%;" align="center">
         <p style="font-size:200%; margin-bottom:30px;"><b>НАШ РЕЙТИНГ СЕРИАЛОВ НЕВЕРОЯТНО ПРЕДВЗЯТ, НЕОБЪЕКТИВЕН И СПОРЕН</b></p>
         <p style="font-size:150%; margin-bottom:30px;">Наши эксперты уже всё выбрали за вас</p>
-        <a href="/Home/About" class="transparent-btn-white">КАК МЫ СОСТАВЛЯЕМ РЕЙТИНГ</a></input>
+        <a href="/Home/About" class="transparent-btn-white">КАК МЫ СОСТАВЛЯЕМ РЕЙТИНГ</a>
     </div>
 </div>
 <hr class="hr-main"/>
@@ -19,15 +19,24 @@
 }
 else
 {
-	<div class="row">
-		@foreach (var item in Model)
-	    {
-		    <div class="col-md-3">
-			    <a asp-area="" asp-controller="tvshows" asp-action="GetTVshow" asp-route-short_name="@item.short_name">
-			        <img style="max-width:100%; height:auto;" src="@item.picture_path_main"/>
-			    </a>
-			</div>
-		}
-	</div>
+	int items = Model.Count();
+	for (int i = 0; i < items; i++)
+	{
+    	if (i % 3 == 0)
+        {
+            @:<div class="row">
+        }
+		
+	    <div class="col-md-3" style="padding:10px;">
+            <a asp-area="" asp-controller="tvshows" asp-action="GetTVshow" asp-route-short_name="@Model.ElementAt(i).Short_name">
+                <img style="max-width:100%; height:auto;" src="@Model.ElementAt(i).Picture_path_main"/>
+            </a>
+        </div>
+
+		if (i % 3 == 2 || i == items - 1)
+    	{
+	        @:</div>
+    	}
+	}
 }
 </div>

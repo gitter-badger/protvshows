@@ -1,0 +1,33 @@
+﻿@model int
+
+@{
+    var statusCode = Model;
+    string statusmessage;
+    switch (statusCode)
+    {
+        case 400:
+            statusmessage = "Что-то не так с вашим запросом.";
+            break;
+        case 403:
+            statusmessage = "У вас нет доступа к этой странице.";
+            break;
+        case 404:
+            statusmessage = "Нет такой страницы. Возможно, вы перешли по неправильной ссылке.";
+            break;
+        case 408:
+            statusmessage = "Сервер не дождался ответа на запрос.";
+            break;
+        case 500:
+            statusmessage = "Что-то сломалось на сервере. Но мы это отремонтируем.";
+            break;
+        default:
+            statusmessage = "Не знаем, как уж так вышло, но произошла какая-то неизвестная ошибка.";
+            break;
+    }
+}
+
+<div class="container">
+    <h2 style="margin-top:50px; margin-bottom:30px;">Oopsy, Daisy!</h2>
+    <h4>Ошибка <b>@Model</b></h4>
+	<p>@statusmessage</p>
+</div>
