@@ -29,7 +29,7 @@ body {
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 700px;
 }
 
 a:hover, a:visited, a:link, a:active {
@@ -102,4 +102,19 @@ a.transparent-btn-black:hover, a.transparent-btn-black:focus, a.transparent-btn-
 
 div.row-show-description {
     margin-bottom:30px;
+}
+
+input.rating {
+    text-align: center;
+}
+
+.text-danger {
+    color: red;
+}
+
+.validation-summary {
+    background-color: #161616;
+    border: 1px #353535 solid;
+    padding: 10px;
+    margin-bottom: 20px;
 }

@@ -22,7 +22,7 @@ else
 	int items = Model.Count();
 	for (int i = 0; i < items; i++)
 	{
-    	if (i % 3 == 0)
+    	if (i % 4 == 0)
         {
             @:<div class="row">
         }
@@ -33,7 +33,7 @@ else
             </a>
         </div>
 
-		if (i % 3 == 2 || i == items - 1)
+		if (i % 4 == 3 || i == items - 1)
     	{
 	        @:</div>
     	}

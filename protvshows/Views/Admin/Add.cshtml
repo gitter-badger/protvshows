@@ -1,3 +1,269 @@
-﻿<div class="container" style="margin-top:30px;">
-    ololo
+﻿@model protvshows.Models.TVshow
+
+<div class="container" style="margin-top:30px;">
+
+	<h3>Добавление нового сериала</h3>
+    <hr style="margin-bottom:20px;"/>
+	
+	<form asp-controller="Admin" asp-action="Add" method="post" class="form-horizontal" role="form">
+
+		<!-- TODO showing what went wrong on server -->
+		<p class="text-danger">@ViewData["Exception"]</p>
+
+		<!-- TODO apply "validation-summary" class -->
+		<div asp-validation-summary="All" class="text-danger"></div>
+
+		<div class="form-group">
+            <label asp-for="IMDB_link_id" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="IMDB_link_id" class="form-control" />
+                <span asp-validation-for="IMDB_link_id" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Short_name" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Short_name" class="form-control" />
+                <span asp-validation-for="Short_name" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Title" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Info" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <textarea asp-for="Info" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Info" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Genre" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Description" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Link_trailer" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Link_trailer" class="form-control" />
+                <span asp-validation-for="Link_trailer" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Link_discussion" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Link_discussion" class="form-control" />
+                <span asp-validation-for="Link_discussion" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Rating_boy" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Rating_boy" class="form-control" />
+                <span asp-validation-for="Rating_boy" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Rating_girl" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Rating_girl" class="form-control" />
+                <span asp-validation-for="Rating_girl" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Rating_expert" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Rating_expert" class="form-control" />
+                <span asp-validation-for="Rating_expert" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Rating_imdb" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Rating_imdb" class="form-control" />
+                <span asp-validation-for="Rating_imdb" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Rating_imdb_date" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Rating_imdb_date" class="form-control" />
+                <span asp-validation-for="Rating_imdb_date" class="text-danger"></span>
+            </div>
+        </div>
+
+        <table style="border-spacing: 15px; border-collapse: separate; margin:0px auto;">
+			<thead>
+				<tr>
+					<th></th>
+					<th style="text-align:center;">Мужчины</th>
+					<th style="text-align:center;">Женщины</th>
+					<th style="text-align:center;">Эксперты</th>
+				</tr>
+			</thead>
+            <tbody>
+				<tr>
+					<th style="text-align:right;">Динамизм</th>
+                    <td>
+					    <input asp-for="Dynamism_boy" class="form-control rating" />
+					    <!--<span asp-validation-for="Dynamism_boy" class="text-danger"></span>-->
+					</td>
+                    <td>
+					    <input asp-for="Dynamism_girl" class="form-control rating" />
+					    <!--<span asp-validation-for="Dynamism_girl" class="text-danger"></span>-->
+					</td>
+					<td>
+					    <input asp-for="Dynamism_expert" class="form-control rating" />
+					    <!--<span asp-validation-for="Dynamism_expert" class="text-danger"></span>-->
+					</td>
+				</tr>
+				<tr>
+                    <th style="text-align:right;">Реалистичность</th>
+                    <td>
+                        <input asp-for="Realism_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Realism_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Realism_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Realism_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Realism_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Realism_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Оригинальность</th>
+                    <td>
+                        <input asp-for="Originality_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Originality_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Originality_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Originality_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Originality_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Originality_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Вовлечение</th>
+                    <td>
+                        <input asp-for="Involvement_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Involvement_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Involvement_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Involvement_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Involvement_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Involvement_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Картинка</th>
+                    <td>
+                        <input asp-for="Visual_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Visual_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Visual_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Visual_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Visual_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Visual_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Актёрский состав</th>
+                    <td>
+                        <input asp-for="Actors_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Actors_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Actors_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Actors_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Actors_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Actors_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Музыка</th>
+                    <td>
+                        <input asp-for="Music_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Music_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Music_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Music_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Music_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Music_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+				<tr>
+                    <th style="text-align:right;">Юмор</th>
+                    <td>
+                        <input asp-for="Humor_boy" class="form-control rating" />
+                        <!--<span asp-validation-for="Humor_boy" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Humor_girl" class="form-control rating" />
+                        <!--<span asp-validation-for="Humor_girl" class="text-danger"></span>-->
+                    </td>
+                    <td>
+                        <input asp-for="Humor_expert" class="form-control rating" />
+                        <!--<span asp-validation-for="Humor_expert" class="text-danger"></span>-->
+                    </td>
+                </tr>
+			</tbody>
+		</table>
+
+		<div class="form-group" style="margin-top:20px;">
+            <label asp-for="Verdict_id" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Verdict_id" class="form-control" />
+                <span asp-validation-for="Verdict_id" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Picture_path_main" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Picture_path_main" class="form-control" />
+                <span asp-validation-for="Picture_path_main" class="text-danger"></span>
+            </div>
+        </div>
+		<div class="form-group">
+            <label asp-for="Picture_path_detailed" class="col-md-3 control-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Picture_path_detailed" class="form-control" />
+                <span asp-validation-for="Picture_path_detailed" class="text-danger"></span>
+            </div>
+        </div>
+		
+        <div class="form-group" align="center" style="margin-top:20px;">
+            <input type="submit" value="Добавить" class="btn btn-default btn-lg" />
+        </div>
+		
+	</form>
+	
 </div>

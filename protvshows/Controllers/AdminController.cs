@@ -18,26 +18,37 @@ namespace protvshows.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            ViewData["Title"] = "Все сериалы";
+            return View(_context.GetAlltvshows());
         }
 
 		// GET: /<controller>/add
 		public IActionResult Add()
 		{
+            ViewData["Title"] = "Добавить новый сериал";
 			return View();
 		}
 
 		// POST: /<controller>/add
-		//[HttpPost]
-		//[ValidateAntiForgeryToken]
-  //      public async Task<IActionResult> Create(TVshow newTVshow)
-		//{
-		//	if (ModelState.IsValid)
-		//	{
-  //              await _context.Create(newTVshow);
-		//		return RedirectToAction("Index");
-		//	}
-  //          return View(newTVshow);
-		//}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+        public IActionResult Add(TVshow newTVshow)
+		{
+			if (ModelState.IsValid)
+			{
+                try
+                {
+                    //throw new Exception("Да просто проверка исключений");
+                    _context.Create(newTVshow);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewData["Exception"] = string.Format("{0}", ex.Message);
+                }
+			}
+            ViewData["Title"] = "Добавить новый сериал";
+            return View(newTVshow);
+		}
     }
 }
